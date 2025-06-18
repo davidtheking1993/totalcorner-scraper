@@ -1,11 +1,13 @@
 import { chromium } from 'playwright';
 
-async function scrapeNextGoal(url) {
+const url = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
+
+async function scrapeNextGoal(link) {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
-  await page.goto(url, { waitUntil: 'networkidle' });
+  await page.goto(link, { waitUntil: 'networkidle' });
 
-  await page.waitForSelector('#next_goal_table', { timeout: 15000 });
+  await page.waitForSelector('#next_goal_table', { timeout: 10000 });
 
   const rows = await page.$$eval('#next_goal_table tbody tr', trs =>
     trs.map(tr => {
@@ -14,9 +16,8 @@ async function scrapeNextGoal(url) {
     })
   );
 
-  await browser.close();
   console.table(rows);
+  await browser.close();
 }
 
-const url = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
 scrapeNextGoal(url).catch(console.error);
