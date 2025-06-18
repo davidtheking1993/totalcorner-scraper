@@ -1,8 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node scrapeNextGoal.js",
-    "postinstall": "playwright install chromium"
+    "start": "node scrapeNextGoal.js"
   },
   "dependencies": {
     "playwright": "^1.44.0"
