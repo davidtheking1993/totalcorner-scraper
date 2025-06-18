@@ -4,8 +4,9 @@
   "main": "scrapeNextGoal.js",
   "type": "module",
   "scripts": {
-    "start": "node scrapeNextGoal.js"
-  },
+  "start": "node scrapeNextGoal.js",
+  "postinstall": "node install-browsers.js"
+},
   "dependencies": {
     "playwright": "^1.44.0"
   }
