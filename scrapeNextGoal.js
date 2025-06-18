@@ -15,12 +15,8 @@ async function scrapeNextGoal(url) {
   );
 
   await browser.close();
-  return rows;
+  console.table(rows);
 }
 
 const url = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
-
-scrapeNextGoal(url).then(result => {
-  console.log('📊 Tabella Next Goal:');
-  console.table(result);
-}).catch(console.error);
+scrapeNextGoal(url).catch(console.error);
