@@ -1,14 +1,12 @@
-const { chromium } = require('playwright');
+import { chromium } from 'playwright';
 
 async function scrapeNextGoal(url) {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle' });
 
-  // Aspetta che venga caricata la tabella Next Goal
   await page.waitForSelector('#next_goal_table', { timeout: 15000 });
 
-  // Estrai i dati dalla tabella Next Goal
   const rows = await page.$$eval('#next_goal_table tbody tr', trs =>
     trs.map(tr => {
       const cells = Array.from(tr.querySelectorAll('td'));
@@ -20,10 +18,9 @@ async function scrapeNextGoal(url) {
   return rows;
 }
 
-// ESEMPIO USO
-(async () => {
-  const url = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
-  const result = await scrapeNextGoal(url);
+const url = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
+
+scrapeNextGoal(url).then(result => {
   console.log('📊 Tabella Next Goal:');
   console.table(result);
-})();
+}).catch(console.error);
