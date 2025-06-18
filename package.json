@@ -1,0 +1,12 @@
+{
+  "name": "totalcorner-scraper",
+  "version": "1.0.0",
+  "main": "scrapeNextGoal.js",
+  "type": "module",
+  "scripts": {
+    "start": "node scrapeNextGoal.js"
+  },
+  "dependencies": {
+    "playwright": "^1.44.0"
+  }
+}
