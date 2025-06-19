@@ -2,7 +2,7 @@ import axios from 'axios';
 import { load } from 'cheerio';
 
 const FLARESOLVERR_URL = 'https://flaresolverrtc.onrender.com'; // <-- metti il tuo
-const MATCH_URL = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
+const MATCH_URL = 'https://www.totalcorner.com/odds/Rakhine-United-vs-Ayeyawady-Utd/176540767';
 
 async function scrapeNextGoal() {
   try {
