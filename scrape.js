@@ -1,7 +1,7 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 
-const FLARESOLVERR_URL = 'https://flaresolverrtc.onrender.com'; // ← il tuo URL esatto
+const FLARESOLVERR_URL = 'https://flaresolverr-xxxxx.onrender.com'; // <-- metti il tuo
 const MATCH_URL = 'https://www.totalcorner.com/odds/Sweden-Women-U19-vs-Italy-Women-U19/176399807';
 
 async function scrapeNextGoal() {
@@ -13,7 +13,7 @@ async function scrapeNextGoal() {
     });
 
     const html = response.data.solution.response;
-    const $ = cheerio.load(html);
+    const $ = load(html);
 
     const nextGoalTable = $('table:contains("Next Goal")');
 
